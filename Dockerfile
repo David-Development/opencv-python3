@@ -26,7 +26,8 @@ RUN apt-get update \
     && apt-get install -y cmake pkg-config \
     && apt-get install -y libjpeg8-dev libtiff5-dev libjasper-dev libpng12-dev \
     && apt-get install -y libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev \
-    && apt-get install -y libgtk-3-dev libatlas-base-dev gfortran libboost-all-dev
+    && apt-get install -y libgtk-3-dev libatlas-base-dev gfortran libboost-all-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 
 RUN mkdir ~/opencv \
