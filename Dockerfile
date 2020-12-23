@@ -1,7 +1,11 @@
 # xenial = 16.04
 # zesty  = 17.04
 # artful = 17.10
-FROM ubuntu:xenial 
+# bionic = 18.04
+# eoan = 19.10
+# focal = 20.04 LTS
+# groovy = 20.10
+FROM ubuntu:focal 
 
 
 # Set the locale to support proper utf-8 encoding in Python3
@@ -19,12 +23,12 @@ RUN apt-get update \
     && python3 -m pip install --no-cache-dir numpy \
     && rm -rf /var/lib/apt/lists/*
 
-ENV opencv_version=3.4.1
+ENV opencv_version=4.5.1
 
 # Install all requirements for opencv
 RUN apt-get update \
-    && apt-get install -y cmake pkg-config \
-    && apt-get install -y libjpeg8-dev libtiff5-dev libjasper-dev libpng12-dev \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y cmake pkg-config \
+    && apt-get install -y libjpeg8-dev libtiff5-dev libpng-dev \
     && apt-get install -y libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev \
     && apt-get install -y libgtk-3-dev libatlas-base-dev gfortran libboost-all-dev \
     && rm -rf /var/lib/apt/lists/*
